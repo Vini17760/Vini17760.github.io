@@ -2,42 +2,51 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Vini — TheCosmicError_X</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Audiowide&display=swap');
+
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%}
+
     body{
       font-family: 'Orbitron', 'Audiowide', sans-serif;
       color: #e6f0ff;
-      background: radial-gradient(ellipse at bottom, rgba(10,8,20,0.85) 0%, rgba(6,5,12,0.95) 60%), url('./XRsP75.gif') no-repeat center/cover fixed;
+      /* Fundo mais claro */
+      background: radial-gradient(ellipse at bottom, rgba(20,18,40,0.6) 0%, rgba(16,14,30,0.8) 60%), 
+                  url('./XRsP75.gif') no-repeat center/cover fixed;
       overflow:hidden;
     }
 
     .stars, .stars::after{
-      position:fixed;inset:0;content:"";pointer-events:none;
+      position:fixed; inset:0; content:""; pointer-events:none;
       background-image: radial-gradient(#fff 1px, transparent 1px);
       background-size: 3px 3px;
       opacity:0.08;
     }
-    .stars::after{background-size:6px 6px;opacity:0.04;filter:blur(1px)}
+    .stars::after{
+      background-size:6px 6px;
+      opacity:0.04;
+      filter:blur(1px)
+    }
 
     .nebula{
-      position:fixed;inset:-10% -20% auto auto;width:60%;height:60%;pointer-events:none;
-      background: radial-gradient(closest-side at 10% 20%, rgba(255,45,85,0.22), transparent 20%), radial-gradient(closest-side at 80% 80%, rgba(120,60,255,0.18), transparent 25%);
-      filter:blur(40px);opacity:0.6;
+      position:fixed; inset:-10% -20% auto auto; width:60%; height:60%; pointer-events:none;
+      background: radial-gradient(closest-side at 10% 20%, rgba(255,45,85,0.22), transparent 20%), 
+                  radial-gradient(closest-side at 80% 80%, rgba(120,60,255,0.18), transparent 25%);
+      filter:blur(40px); opacity:0.6;
     }
 
     .card{
-      position: absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-      width:min(880px,92vw);padding:36px;border-radius:20px;
+      position: absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+      width:min(880px,90vw); max-width:92vw;
+      padding:36px; border-radius:20px;
       backdrop-filter: blur(6px) saturate(120%);
       background: linear-gradient(180deg, rgba(16,12,28,0.36), rgba(6,5,12,0.6));
       text-align:center;
     }
 
-    /* ✨ TÍTULO MUDANDO DE COR ✨ */
     h1{
       font-size: clamp(28px, 5vw, 56px);
       margin-bottom:6px;
@@ -54,26 +63,64 @@
     }
 
     .subtitle{color:#cbd6ffaa;margin-bottom:18px}
-
-    .location{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,0.02);font-size:14px;color:#ffd6e1}
-
-    .icons{margin-top:18px;display:flex;gap:14px;justify-content:center;align-items:center}
-    .icon-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,0.02);cursor:pointer}
-
-    .player{margin-top:20px;display:flex;gap:12px;align-items:center;justify-content:center}
-
-    .play{
-      width:62px;height:62px;border-radius:50%;display:grid;place-items:center;
-      background-size:cover;background-position:center;
-      cursor:pointer;border:none;
+    .location{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 14px; border-radius:999px;
+      background:rgba(255,255,255,0.02); font-size:14px; color:#ffd6e1
     }
 
-    .progress{width:420px;max-width:58vw;background:rgba(255,255,255,0.04);height:8px;border-radius:999px;overflow:hidden}
-    .progress > i{display:block;height:100%;width:0%;background:linear-gradient(90deg,#ff7b9d,#9b6bff)}
+    .icons{
+      margin-top:18px;
+      display:flex; gap:14px;
+      justify-content:center; align-items:center
+    }
+    .icon-btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 14px; border-radius:12px;
+      background:rgba(255,255,255,0.02); cursor:pointer
+    }
+
+    .player{
+      margin-top:20px;
+      display:flex; gap:12px;
+      align-items:center; justify-content:center;
+      flex-wrap:wrap;
+    }
+
+    .play{
+      width:62px; height:62px; border-radius:50%;
+      display:grid; place-items:center;
+      background-size:cover; background-position:center;
+      cursor:pointer; border:none;
+    }
+
+    .progress{
+      width:420px; max-width:80vw;
+      background:rgba(255,255,255,0.04);
+      height:8px; border-radius:999px; overflow:hidden
+    }
+    .progress > i{
+      display:block; height:100%; width:0%;
+      background:linear-gradient(90deg,#ff7b9d,#9b6bff)
+    }
 
     .footer{margin-top:18px;font-size:13px;color:#ced8ff88}
 
-    @media (max-width:600px){.card{padding:20px;border-radius:14px}.progress{display:none}}
+    /* RESPONSIVO REAL */
+    @media (max-width:768px){
+      .card{padding:24px;border-radius:16px;width:90vw}
+      .progress{max-width:70vw}
+    }
+
+    @media (max-width:480px){
+      .card{padding:16px;border-radius:12px;width:95vw}
+      h1{font-size:clamp(20px,6vw,40px)}
+      .subtitle{font-size:14px}
+      .location{font-size:12px;padding:6px 10px}
+      .icons{gap:10px}
+      .player{flex-direction:column; gap:10px}
+      .progress{display:none}
+    }
 
     @keyframes discspin{from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
     .spin{animation:discspin 4s linear infinite;}
@@ -103,7 +150,6 @@
       <button class="play" id="playBtn" style="background-image:url('./Kaleb (1).jpeg');"></button>
       <button id="nextBtn" class="icon-btn" style="padding:8px 12px;">⏭</button>
       <div class="progress"><i id="progressBar"></i></div>
-    </div>
     </div>
 
     <div class="footer">apenas um cara ferrado na vida ai</div>
@@ -153,5 +199,3 @@
 
 </body>
 </html>
-
-
