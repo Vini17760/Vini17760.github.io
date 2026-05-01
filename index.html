@@ -1,318 +1,323 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>Site Secreto do Caos do Vini</title>
+<title>Hakari Jackpot APOCALIPSE 🎰</title>
 
 <style>
 body {
-    margin: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #0e0e0e;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: Arial, sans-serif;
-    overflow: hidden;
-    color: #fff;
-    text-align: center;
-    cursor: pointer;
-    position: relative;
-    transition: all 1s;
-}
-
-#text {
-    font-size: 3em;
-    position: absolute;
-    user-select: none;
-    transition: all 0.3s;
-}
-
-.shake {
-    animation: shake 0.3s infinite;
-}
-
-@keyframes shake {
-    0% { transform: translate(0,0); }
-    25% { transform: translate(5px,0); }
-    50% { transform: translate(-5px,0); }
-    75% { transform: translate(5px,0); }
-    100% { transform: translate(0,0); }
-}
-
-.question {
-    position: absolute;
-    font-size: 1.8em;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: none;
-}
-
-.option {
-    display: block;
-    margin: 10px 0;
-    font-size: 1.5em;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.option:hover {
-    color: yellow;
-    transform: scale(1.2);
-}
-
-#hintBox {
-    position: absolute;
-    bottom: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    padding: 15px;
-    background: rgba(0,0,0,0.8);
-    border: 2px solid #fff;
-    font-size: 1.2em;
-    display: none;
-    text-align: left;
-    cursor: pointer;
-}
-
-.button {
-    margin: 10px;
-    padding: 15px 30px;
-    font-size: 1.5em;
-    cursor: pointer;
-    border: none;
-    border-radius: 10px;
-    background: limegreen;
-    color: black;
-    transition: 0.2s;
-    display: none;
-}
-
-.button:hover {
-    transform: scale(1.1);
-    background: yellow;
-}
-
-#contrario {
-    position: absolute;
-    bottom: 10%;
-    font-size: 1.3em;
-    color: red;
-    background: rgba(0,0,0,0.7);
-    padding: 10px 15px;
-    border-radius: 8px;
-    display: none;
-}
-
-#secretFact {
-    position: fixed;
-    bottom: 5%;
-    right: 5%;
-    font-size: 1.1em;
-    padding: 10px 15px;
-    background: purple;
+    background: radial-gradient(circle, #1a001f, #000);
     color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    display: none;
+    font-family: Arial;
+    text-align: center;
+    overflow: hidden;
 }
+
+/* TREMER */
+.shake { animation: shake 0.1s infinite; }
+@keyframes shake {
+    0%{transform:translate(2px,2px);}
+    50%{transform:translate(-2px,-2px);}
+    100%{transform:translate(2px,-2px);}
+}
+
+/* SLOT */
+.slot {
+    font-size: 60px;
+    width: 90px;
+    height: 90px;
+    display: inline-block;
+    line-height: 90px;
+    border: 2px solid white;
+    margin: 5px;
+    border-radius: 10px;
+    background: #222;
+}
+
+/* NEON */
+.neon-win { animation: neonWin 0.5s infinite alternate; }
+@keyframes neonWin {
+    from { box-shadow: 0 0 10px cyan; }
+    to { box-shadow: 0 0 25px magenta; }
+}
+
+.neon-insane { animation: neonInsane 0.2s infinite; }
+@keyframes neonInsane {
+    0% { box-shadow: 0 0 15px purple; }
+    33% { box-shadow: 0 0 20px lime; }
+    66% { box-shadow: 0 0 25px hotpink; }
+}
+
+/* ALAVANCA */
+.lever-container {
+    width: 80px;
+    height: 150px;
+    margin: 20px auto;
+    position: relative;
+}
+.lever-arm {
+    width: 8px;
+    height: 110px;
+    background: silver;
+    position: absolute;
+    left: 36px;
+    top: 0;
+    transform-origin: top center;
+    transition: transform 0.25s;
+}
+.knob {
+    width: 24px;
+    height: 24px;
+    background: red;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -12px;
+    left: -8px;
+}
+.lever-base {
+    width: 30px;
+    height: 10px;
+    background: #555;
+    position: absolute;
+    bottom: 0;
+    left: 25px;
+}
+
+/* TEXTO */
+.big-text {
+    position: fixed;
+    top: 40%;
+    width: 100%;
+    font-size: 40px;
+    font-weight: bold;
+    text-shadow: 0 0 20px white;
+}
+
+/* FRASES */
+#taunt {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #ccc;
+    height: 20px;
+}
+
+/* 777 VOANDO */
+.fly777 {
+    position: fixed;
+    font-size: 28px;
+    font-weight: bold;
+    animation: neonText 0.3s infinite alternate;
+}
+@keyframes neonText {
+    0% { color: purple; }
+    33% { color: lime; }
+    66% { color: hotpink; }
+}
+
+/* BOTÃO */
+.secret {
+    position: fixed;
+    bottom: 8px;
+    right: 8px;
+    font-size: 18px;
+    opacity: 0.3;
+    cursor: pointer;
+}
+
 </style>
 </head>
 
 <body>
 
-<div id="text">Não clique aqui</div>
+<h1>🎰 HAKARI JACKPOT APOCALIPSE 🎰</h1>
 
-<div class="question" id="question">
-    <div>Qual é a cor do vento?</div>
-    <div class="option" onclick="answer(1)">Rosa com glitter 🌸</div>
-    <div class="option" onclick="answer(2)">Invisible, duh 🤯</div>
-    <div class="option" onclick="answer(3)">Banana 🤌🍌</div>
+<div>
+    <div class="slot" id="s1">❓</div>
+    <div class="slot" id="s2">❓</div>
+    <div class="slot" id="s3">❓</div>
 </div>
 
-<div id="hintBox">Clique aqui para ver a primeira dica!</div>
+<div class="lever-container">
+    <div class="lever-arm" id="lever">
+        <div class="knob"></div>
+    </div>
+    <div class="lever-base"></div>
+</div>
 
-<!-- BOTÕES DE AÇÃO FORA DO DIÁLOGO -->
-<button class="button" id="btnAgua" onclick="buttonClick('beber agua')">Beber Água 💧</button>
-<button class="button" id="finalButton" onclick="playAudio()">Ver Surpresa 🎵</button>
-<button class="button" id="btnCaos" onclick="buttonClick('abraçar o caos')">Abraçar o Caos 🤗</button>
+<p>Clique na alavanca</p>
 
-<div id="contrario"></div>
+<input type="file" id="musicInput" accept="audio/*">
+<p style="font-size:12px;">coloque aqui a musica que deseja ouvir quando fizer jackpot 777</p>
 
-<!-- BOTÃO SECRETO HISTÓRICO -->
-<div id="secretFact" onclick="showSecretFact()">Clique aqui para um fato secreto 🕵️‍♂️</div>
+<div id="result">A sorte decide...</div>
+<div id="taunt"></div>
 
-<!-- COLQUE AQUI O ÁUDIO NA MESMA PASTA DO SITE -->
-<audio id="finalAudio" src="áudio_ rapaz ele tá sem zap.mp3"></audio>
-<!-- Troque "meu_audio.mp3" pelo nome do seu arquivo -->
+<audio id="winMusic"></audio>
+
+<div class="secret" onclick="force777()">🍀</div>
 
 <script>
-const text = document.getElementById("text");
-const question = document.getElementById("question");
-const hintBox = document.getElementById("hintBox");
-const btnAgua = document.getElementById("btnAgua");
-const finalButton = document.getElementById("finalButton");
-const btnCaos = document.getElementById("btnCaos");
-const contrarioDiv = document.getElementById("contrario");
-const finalAudio = document.getElementById("finalAudio");
-const secretFactBtn = document.getElementById("secretFact");
+const lever = document.getElementById("lever");
+const audio = document.getElementById("winMusic");
+const slots = document.querySelectorAll(".slot");
 
-let clicks = 0;
-let phase = 0;
-const words = ["Não clique aqui","Sério, não clica","Último aviso","Tá curioso né?","Para mano","Vai dar ruim"];
+let spinning = false;
+let tauntInterval;
 
-let hintStep = 0;
-const hints = [
-    "<strong>GPT Contrário:</strong> Ah, só clique em qualquer resposta, não importa! 😈",
-    "<strong>GPT Certinho:</strong> Dica real: Pense nas cores que sentimos com o vento, algo suave e imaginário 🌬️💨",
-    "<strong>GPT Contrário:</strong> Haha, rosa com glitter seria perfeito! 😂",
-    "<strong>GPT Certinho:</strong> Lembre-se: o vento não tem cor física, mas associamos a cores calmas, como azul ou branco.",
-    "<strong>GPT Contrário:</strong> Banana voadora? 🍌 É isso!",
-    "<strong>GPT Erradão:</strong> Hahaha, decida em quem confiar agora 😎"
+// FRASES
+const taunts = [
+"isso... continua tentando 😈",
+"quase kkkkk (mentira)",
+"o cassino agradece 💀",
+"mais uma tentativa inútil",
+"vc acha que vai ganhar?",
+"hakari tá rindo de vc agora"
 ];
 
-// Palavras mudando no começo
-setInterval(() => {
-    if (phase === 0) {
-        text.textContent = words[Math.floor(Math.random() * words.length)];
-    }
-}, 800);
+const winTaunts = [
+"ok… isso foi inesperado 😳",
+"não acredito que vc conseguiu",
+"foi sorte… pura sorte"
+];
 
-function teleport() {
-    const x = Math.random() * (window.innerWidth - text.offsetWidth);
-    const y = Math.random() * (window.innerHeight - text.offsetHeight);
-    text.style.left = x + "px";
-    text.style.top = y + "px";
-}
+const insaneTaunts = [
+"HAHAHAHAHAHA",
+"ENERGIA INFINITA",
+"QUEBROU TUDO",
+"VOCÊ NÃO DEVERIA TER CONSEGUIDO",
+"O SISTEMA CAIU"
+];
 
-text.addEventListener("click", () => {
-    if (phase === 0) {
-        clicks++;
-        teleport();
-        text.classList.add("shake");
-        text.style.color = "red";
-        if (clicks === 3) {
-            phase = 1;
-            text.classList.remove("shake");
-            text.style.color = "lime";
-            text.textContent = "Ok… você conseguiu. Então bora lá.";
-        }
-    } else if (phase === 1) {
-        phase = 2;
-        transformSite();
-    }
-});
-
-function transformSite() {
-    document.body.style.background = "linear-gradient(135deg, #ff00ff, #00ffff)";
-    text.style.color = "#000";
-    text.style.fontSize = "4em";
-    text.textContent = "Agora não tem mais volta 😈";
-    text.style.left = "50%";
-    text.style.top = "50%";
-    text.style.transform = "translate(-50%, -50%) rotate(360deg)";
-
-    setTimeout(() => {
-        text.style.display = "none";
-        startInteractive();
-    }, 3000);
-}
-
-// Inicia perguntas e dicas
-function startInteractive() {
-    question.style.display = "block";
-    hintBox.style.display = "block";
-    hintBox.innerHTML = "Clique aqui para ver a primeira dica!";
-    hintStep = 0;
-
-    hintBox.onclick = function() {
-        if(hintStep < hints.length){
-            hintBox.innerHTML = hints[hintStep] + "<br><br>Clique novamente para a próxima dica!";
-            hintStep++;
-        } else {
-            hintBox.innerHTML = "Fim das dicas! Volte para responder a pergunta 😎";
-        }
-    };
-
-    alert("Este site foi feito pelo Vini 😎\nSegue ele nas redes sociais! (imaginário, claro 😏)");
-}
-
-function answer(option) {
-    let msg = "";
-    switch(option) {
-        case 1: msg = "Rosa com glitter? Hahaha tá viajando demais 😂"; break;
-        case 2: msg = "Invisible? Mano, quase certo, mas não 🤣"; break;
-        case 3: msg = "Banana?! 🍌 Tu tá louco, mas eu gosto da criatividade 😎"; break;
-        case 4: msg = "Limonada de lava? 🔥 Meio perigoso…"; break;
-        case 5: msg = "Pizza de nuvem ☁️ Só se for flutuante 😂"; break;
-        case 6: msg = "Salgadinho fantasma 👻 Mano, respeita os espíritos 😏"; break;
-    }
-    alert(msg);
-
-    if(option < 4) {
-        question.innerHTML = `
-            <div>Qual é a comida favorita do site secreto?</div>
-            <div class="option" onclick="answer(4)">Limonada de lava 🌋</div>
-            <div class="option" onclick="answer(5)">Pizza de nuvem ☁️🍕</div>
-            <div class="option" onclick="answer(6)">Salgadinho fantasma 👻</div>
-        `;
-    } else if(option >= 4) {
-        question.innerHTML = `
-            <div>Última pergunta, prometo!</div>
-            <div class="option" onclick="endChaos()">Correr do caos 🏃‍♂️</div>
-            <div class="option" onclick="endChaos()">Abraçar o caos 🤗</div>
-            <div class="option" onclick="endChaos()">Chorar pro caos 😭</div>
-        `;
-    }
-}
-
-// Final do caos
-function endChaos() {
-    alert("Obrigado por toda sua curiosidade e por participar do site do caos! 💧 Vai beber água aí, viu?");    
-    question.style.display = "none";
-    hintBox.style.display = "none";
-
-    // Mostra botões de ação
-    btnAgua.style.display = "inline-block";
-    finalButton.style.display = "inline-block";
-    btnCaos.style.display = "inline-block";
-
-    // Botão secreto histórico aparece
-    secretFactBtn.style.display = "block";
-}
-
-// Contrário só reage aos botões fora do diálogo
-const contrarioFalas = {
-    "beber agua": ["Que nada! Vai beber areia quente! 🔥😂","Água? Melhor gelo derretido direto! 🧊🤣","Ah mano, esquece água, toma lava líquida! 🌋"],
-    "clicar no botão final": ["Rapazzzz, que nada, não vai ouvir nada 😎","Esse botão é só pra te trollar 😂","Esquece esse áudio, canta no chuveiro melhor"],
-    "abraçar o caos": ["Abraçar o caos? Nem pensar, corre pra biblioteca 🤓","Que nada, aperta o botão de fugir do caos 😂","Abre um guarda-chuva e ignora o caos! ☂️"]
+// MUSICA
+musicInput.onchange = e => {
+    let f = e.target.files[0];
+    if (f) audio.src = URL.createObjectURL(f);
 };
 
-function buttonClick(botao) {
-    const falas = contrarioFalas[botao];
-    const fala = falas[Math.floor(Math.random() * falas.length)];
-    contrarioDiv.innerHTML = "GPT Contrário: " + fala;
-    contrarioDiv.style.display = "block";
-    setTimeout(() => { contrarioDiv.style.display = "none"; }, 4000);
+// ALAVANCA
+lever.onclick = () => {
+    if (spinning) return;
+
+    lever.style.transform = "rotate(65deg)";
+    setTimeout(()=> lever.style.transform="rotate(0deg)",250);
+
+    spin();
+};
+
+function randomSymbol(){
+    let r=Math.random();
+    if(r<0.02)return "7";
+    if(r<0.3)return "💀";
+    if(r<0.5)return "🔥";
+    if(r<0.7)return "⚡";
+    if(r<0.85)return "💎";
+    return "🍀";
 }
 
-// Botão final toca o áudio
-function playAudio() {
-    finalAudio.play(); // <-- Aqui toca o áudio que você colocou
-    buttonClick('clicar no botão final');
+function spin(){
+    spinning=true;
+    startTaunts();
+
+    let spins=20;
+    let i=setInterval(()=>{
+        s1.innerHTML=randomSymbol();
+        s2.innerHTML=randomSymbol();
+        s3.innerHTML=randomSymbol();
+        spins--;
+
+        if(spins<=0){
+            clearInterval(i);
+            stopTaunts();
+            checkWin();
+            spinning=false;
+        }
+    },70);
 }
 
-// BOTÃO SECRETO HISTÓRICO
-function showSecretFact() {
-    // Contrário contando tudo errado
-    alert("GPT Contrário: A Segunda Guerra Mundial foi só uma festa de chá na Alemanha 😂🍵");
-    setTimeout(() => {
-        alert("GPT Certinho: Ignora esse cara, ele é um crime! ⚠️");
-    }, 500);
+function startTaunts(){
+    tauntInterval=setInterval(()=>{
+        taunt.innerText=taunts[Math.floor(Math.random()*taunts.length)];
+    },800);
+}
+
+function stopTaunts(){
+    clearInterval(tauntInterval);
+}
+
+function checkWin(){
+    let a=s1.innerHTML,b=s2.innerHTML,c=s3.innerHTML;
+
+    if(a==="7"&&b==="7"&&c==="7")insaneJackpot();
+    else if(a===b&&b===c)normalJackpot();
+    else{
+        result.innerHTML="💀 perdeu...";
+        taunt.innerText="kkkkk perdeu de novo";
+    }
+}
+
+function normalJackpot(){
+    result.innerHTML="✨ JACKPOT ✨";
+    taunt.innerText=winTaunts[Math.floor(Math.random()*winTaunts.length)];
+
+    slots.forEach(s=>s.classList.add("neon-win"));
+    setTimeout(()=>slots.forEach(s=>s.classList.remove("neon-win")),2000);
+
+    if(audio.src)audio.play();
+}
+
+function insaneJackpot(){
+    result.innerHTML="💜 777 APOCALIPSE 💜";
+
+    document.body.classList.add("shake");
+    slots.forEach(s=>s.classList.add("neon-insane"));
+
+    let text=document.createElement("div");
+    text.className="big-text";
+    text.innerText="Great gain of infinite energy for 4 minutes";
+    document.body.appendChild(text);
+
+    let spam=setInterval(()=>{
+        taunt.innerText=insaneTaunts[Math.floor(Math.random()*insaneTaunts.length)];
+    },200);
+
+    let spawn=setInterval(()=>{
+        let el=document.createElement("div");
+        el.className="fly777";
+        el.innerText="777";
+        el.style.left=Math.random()*100+"vw";
+        el.style.top=Math.random()*100+"vh";
+
+        let angle=Math.random()*360;
+        let dist=200+Math.random()*300;
+
+        el.animate([
+            {transform:"translate(0,0)"},
+            {transform:`translate(${Math.cos(angle)*dist}px,${Math.sin(angle)*dist}px)`}
+        ],{duration:1000});
+
+        document.body.appendChild(el);
+        setTimeout(()=>el.remove(),2000);
+
+    },80);
+
+    setTimeout(()=>{
+        clearInterval(spawn);
+        clearInterval(spam);
+        document.body.classList.remove("shake");
+        slots.forEach(s=>s.classList.remove("neon-insane"));
+        text.remove();
+    },131000);
+
+    if(audio.src)audio.play();
+}
+
+// BOTÃO
+function force777(){
+    if(spinning)return;
+    s1.innerHTML="7";
+    s2.innerHTML="7";
+    s3.innerHTML="7";
+    insaneJackpot();
 }
 </script>
 
